@@ -1,0 +1,29 @@
+module proj(clk,rst,count);
+
+input clk;
+input rst;
+reg pwm;
+
+output reg [7:0] count;
+
+initial count = 0;
+always @ (posedge clk)
+
+begin
+if(rst) count<=0;
+//else if (count == 511)
+//$finish;
+else
+count <= count + 1;
+
+if(count<128)
+pwm <= 1;
+else pwm <=0;
+
+
+
+end
+initial
+#9999 $finish;
+
+endmodule
